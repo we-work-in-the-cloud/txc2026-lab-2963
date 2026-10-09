@@ -49,7 +49,7 @@ The lab takes time, so your Cloud Shell session may have expired. Check that you
 1. [Log in to the OpenShift cluster](20-deploy.md#log-in-to-the-openshift-cluster) again.
 1. Clone the repository and regenerate `overrides.yaml`:
    ```sh
-   git clone https://github.com/hashicorp/txc2026-lab-2963
+   git clone https://github.com/we-work-in-the-cloud/txc2026-lab-2963
    cd txc2026-lab-2963
    ./prepare-helm.sh
    ```

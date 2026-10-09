@@ -84,7 +84,7 @@ The lab repository contains the helper script that will configure Helm for your 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/hashicorp/txc2026-lab-2963
+   git clone https://github.com/we-work-in-the-cloud/txc2026-lab-2963
    ```
 1. Change into the lab directory:
    ```sh
