@@ -1,0 +1,13 @@
+- [🔎 Overview](README.md)
+- [🏎️ Getting started](10-getting-started.md)
+- [🚀 Deploy Terraform Enterprise](20-deploy.md)
+- [🩺 Check health](30-health.md)
+- [📊 Observe logs and metrics](40-observe.md)
+- [🔄 Plan and apply](50-plan-apply.md)
+- [⬆️ Upgrade to latest version](60-upgrade.md)
+- [🔧 Troubleshoot](70-troubleshoot.md)
+- [🏁 Conclusion](90-conclusion.md)
+- **Learn more**
+- [Lab Sign in](https://ibm.biz/txc-2963-invite)
+- [Cloud Console](https://cloud.ibm.com/)
+- [Documentation](https://developer.hashicorp.com/terraform/enterprise)
