@@ -122,9 +122,11 @@ The lab repository contains a simple `main.tf`. You need to add a `cloud` block 
    ```sh
    nano cloud.tf
    ```
-1. Paste the `terraform { ... }` block at the top of the file, then save.
+1. Paste the `terraform { ... }` block at the top of the file, then save and exit:
+   - Press **Ctrl-O** then **Enter** to write the file.
+   - Press **Ctrl-X** to exit.
 
-   !> If the `nano` editor looks garbled after pasting, press **Ctrl-L** to refresh the display.
+   !> If the `nano` editor looks garbled after pasting, press **Ctrl-L** to refresh the display before saving.
 
 1. Initialize Terraform:
    ```sh

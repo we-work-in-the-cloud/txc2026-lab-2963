@@ -89,7 +89,7 @@ The Terraform Enterprise admin console requires a System API token to authentica
    ```sh
    oc exec deploy/terraform-enterprise -- tfectl admin api-token generate --description "lab-admin"
    ```
-   The command prints the token value. **Copy it now** — you won't be able to retrieve it again.
+1. The command prints the token value. **Copy it now** — you won't be able to retrieve it again.
 
 ## Access the admin console
 

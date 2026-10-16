@@ -51,6 +51,8 @@ IBM Cloud Shell gives you a browser-based terminal with all the tools you need �
    [user@cloudshell ~]$
    ```
 
+   ?> **All command-line steps throughout this lab are run in IBM Cloud Shell.** Whenever you see a code block with shell commands, switch to this Cloud Shell tab to run them.
+
    ?> Cloud Shell sessions time out after 60 minutes of inactivity.
 
 ## Log in to the OpenShift cluster
@@ -80,7 +82,7 @@ Before running any `oc` or `helm` commands you need to authenticate against the 
 
 ## Clone the lab repository
 
-The lab repository contains the helper script that will configure Helm for your specific environment.
+The lab repository contains helper scripts written specifically for this lab. They automate the tedious parts — looking up connection strings, injecting credentials, printing the exact commands for your environment — so you can focus on the concepts. The steps they perform are based on the official Terraform Enterprise and helm chart documentations.
 
 1. In Cloud Shell, clone the repository:
    ```sh
@@ -106,7 +108,7 @@ The official [terraform-enterprise-helm](https://github.com/hashicorp/terraform-
 
 Using the chart means you get a tested, upgradeable installation path — upgrading Terraform Enterprise is a single `helm upgrade` command rather than manually editing a dozen manifest files.
 
-The chart is configured through an `overrides.yaml` file. Rather than filling it in manually, the `prepare-helm.sh` script reads your provisioned services and generates the file automatically.
+The chart is configured through an `overrides.yaml` file. Rather than filling it in manually, the lab's `prepare-helm.sh` script reads your provisioned services and generates the file automatically.
 
 1. Run the script:
    ```sh
