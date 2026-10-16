@@ -72,7 +72,7 @@ This is a Helm-based workflow that runs a temporary Kubernetes Job in your exist
 
 1. Find the chart version whose `APP VERSION` is `2.1.0`:
    ```sh
-   helm search repo hashicorp/terraform-enterprise --versions | grep 2.1.0
+   helm search repo hashicorp/terraform-enterprise --versions | grep -E 'NAME|2.1.0'
    ```
    Note the value in the **CHART VERSION** column — you'll use it as `<TARGET_CHART_VERSION>` below.
 

@@ -8,21 +8,17 @@ Keep the IBM Cloud Logs and IBM Cloud Monitoring tabs you opened in the [Observa
 
 ## Scenario 1 — Every run fails immediately (OOM on the run container)
 
-Terraform Enterprise spawns a short-lived Kubernetes Job for each plan or apply. The `TFE_CAPACITY_MEMORY` setting controls how much memory (in MiB) that Job's container is allowed. At the default of `2048` MiB a run has plenty of headroom; set it to `1` MiB and every run container is OOMKilled the moment it starts — while Terraform Enterprise itself stays perfectly healthy.
+Terraform Enterprise spawns a short-lived Kubernetes Job for each plan or apply. The `TFE_CAPACITY_MEMORY` setting controls how much memory (in MiB) that Job's container is allowed. At the default of `2048` MiB a run has plenty of headroom; set it to `1` MiB and every run container will fail to start — while Terraform Enterprise itself stays perfectly healthy.
 
 ### Simulate the failure
 
-1. Open `overrides.yaml` and make two changes under `env.variables`:
-   - Set `TFE_CAPACITY_MEMORY` to `"1"` to force every run container to OOMKill
-   - Set `TFE_RUN_PIPELINE_KUBERNETES_DEBUG_ENABLED` to `"true"` so Kubernetes keeps failed Job pods around long enough to inspect
+1. Open `overrides.yaml` and change `TFE_CAPACITY_MEMORY` from `"512"` to `"1"` to force every run container to fail to start:
    ```sh
    nano overrides.yaml
    ```
+   Scroll down to the `env.variables` section and update the value in place:
    ```yaml
-   env:
-     variables:
        TFE_CAPACITY_MEMORY: "1"
-       TFE_RUN_PIPELINE_KUBERNETES_DEBUG_ENABLED: "true"
    ```
    Save the file.
 

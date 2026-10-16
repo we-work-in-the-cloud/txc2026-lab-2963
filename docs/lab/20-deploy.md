@@ -177,10 +177,12 @@ The chart is configured through an `overrides.yaml` file. Rather than filling it
    ```
    Press **Ctrl-C** to exit `watch` once the pod is **Running**.
 
-2. To see exactly what the container is doing during startup, tail its logs:
+2. To see exactly what the container is doing during startup, you can follow its logs:
    ```sh
    oc logs -f -l app=terraform-enterprise
    ```
+   Press **Ctrl-C** to exit the log stream. You do not need to wait for the full startup, you will confirm startup in the next sections.
+
    <!-- Look for a line like `TFE is now ready to use. Happy Terraforming!` to confirm the application has finished initialising. -->
 
 ### Monitor the rollout — Option B: OpenShift web console
@@ -189,29 +191,10 @@ The chart is configured through an `overrides.yaml` file. Rather than filling it
 2. Select your project (`<your-username>`) from the project drop-down.
 3. In the left sidebar, under **Workloads**, click **Topology**. You will see the `terraform-enterprise` deployment represented as a circle.
    ![](images/20-monitor-deployment.png ':size=800')
+   > Use the icon at the top right of the view to toggle between a list view and the topology view
 4. Watch the circle — it turns **solid blue** once all pods are healthy. A progress ring indicates the rollout is still in progress.
 5. Click the circle, then open the **Resources** tab to see the pod list.
 6. Click a pod name → **Logs** to stream the container output directly in the browser.
-<!-- 7. Look for `TFE is now ready to use. Happy Terraforming!`. -->
-
-<!-- ## Access Terraform Enterprise
-
-Once the pod is **Running** and you have seen `TFE is now ready to use. Happy Terraforming!` in the logs, get the public URL of the application.
-
-**Option A — Cloud Shell:** retrieve the OpenShift route:
-```sh
-oc get routes
-```
-The **HOST/PORT** column shows the hostname. Open that URL in your browser.
-
-**Option B — OpenShift web console:** in the **Topology** view, click the `terraform-enterprise` circle and look for the external route link in the top-right corner of the panel (the small arrow-in-a-box icon).
-
-![](images/20-topology-route.png ':size=800')
-
-
-Either way, you should land on the Terraform Enterprise login page.
-
-![](images/20-tfe-login.png ':size=400') -->
 
 ?> **Checkpoint** — Terraform Enterprise is starting. In the next section you will verify the health of all its subsystems before you start using it.
 

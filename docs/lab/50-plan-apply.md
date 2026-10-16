@@ -190,7 +190,7 @@ Run a plan now, before setting any variables, to see what happens when a require
    ```
    tfelab-2963-student
    ```
-1. Click **Save variable**.
+1. Click **Add variable**.
 
 1. Run the plan again:
    ```sh

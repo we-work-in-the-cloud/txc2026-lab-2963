@@ -60,13 +60,13 @@ With all cluster workloads logging to the same instance, you need to scope the v
 
 !> Log entries from short-lived agent pods (in `<your-username>-agents`) also flow into IBM Cloud Logs. As you go through the next sections, refresh the dashboard to view the activity of agent pods.
 
-?> IBM Cloud Logs also supports log-based alerts — you can trigger a notification when a pattern like `component:atlas level:ERROR` appears. Explore the **Alerts** section on your own after the lab.
+?> IBM Cloud Logs also supports log-based alerts — you can trigger a notification when a pattern like `component:atlas ERROR` appears. Explore the **Alerts** section on your own after the lab.
 
 ### Dedicated dashboard
 
 1. In the left navigation, click the **Dashboards** icon > **Custom Dashboards**.
 
-1. Click **Terraform Enterprise**. The dashboard surfaces pre-filtered log views for each component — bookmark it for troubleshooting.
+1. Click **Terraform Enterprise**. The dashboard surfaces pre-filtered log views for each component.
 
    ![](images/40-tfe-dashboard.png ':size=600')
 
@@ -105,7 +105,7 @@ A pre-built dashboard for Terraform Enterprise is included with your lab instanc
 
    ![](images/40-tfe-monitoring-dashboard.png ':size=800')
 
-   The dashboard is built on the [metrics])https://developer.hashicorp.com/terraform/enterprise/deploy/reference/metrics) Terraform Enterprise exposes about runs and the job queue:
+   The dashboard is built on the [metrics](https://developer.hashicorp.com/terraform/enterprise/deploy/reference/metrics) Terraform Enterprise exposes about runs and the job queue:
 
    | Metric | Type | What it shows |
    |---|---|---|
