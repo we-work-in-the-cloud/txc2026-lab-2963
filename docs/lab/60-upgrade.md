@@ -41,9 +41,10 @@ The lab takes time, so your Cloud Shell session may have expired. Check that you
 
 1. In Cloud Shell, make sure you're in the lab repository directory:
    ```sh
-   cd txc2026-lab-2963
+   pwd
+   ls -la
    ```
-   If this works, your session is still good. Skip to the next section.
+   If this works, your session is still good. Skip the next steps and go to the next section, [Run the pre-upgrade check](#run-the-pre-upgrade-check).
 
 1. Otherwise, open a new Cloud Shell window
 1. [Log in to the OpenShift cluster](20-deploy.md#log-in-to-the-openshift-cluster) again.
@@ -155,7 +156,7 @@ This is a Helm-based workflow that runs a temporary Kubernetes Job in your exist
 
 ## Drain the node
 
-Before applying the upgrade you need to stop Terraform Enterprise from picking up new work. The `tfectl node drain` command lets active runs finish and then blocks new ones from starting — this is safer than hard-stopping the pod mid-run.
+Before applying the upgrade you need to stop Terraform Enterprise from picking up new work. The `tfectl node drain` command stops new runs from starting while active runs continue — this is safer than hard-stopping the pod mid-run.
 
 1. Get the name of the Terraform Enterprise pod:
    ```sh
@@ -164,7 +165,7 @@ Before applying the upgrade you need to stop Terraform Enterprise from picking u
 
 1. Drain the node:
    ```sh
-   oc exec <pod-name> -- tfectl node drain
+   oc exec <terraform-enterprise-pod-name> -- tfectl node drain
    ```
 
    You should see:
@@ -179,7 +180,7 @@ Before applying the upgrade you need to stop Terraform Enterprise from picking u
    Terminate signal sent to task worker, it will now begin graceful shutdown
    ```
 
-   ?> Since you just deployed a fresh installation there are no active runs, so the drain completes immediately. In production this step gives long-running plans time to finish gracefully.
+   ?> In production, the drain stops new runs from starting and keeps the node up for 24 hours before it terminates, which gives active runs time to finish gracefully. Since you just deployed a fresh installation there are no active runs, so you don't have to wait: you can proceed with the upgrade right after the drain.
 
 ## Apply the upgrade
 

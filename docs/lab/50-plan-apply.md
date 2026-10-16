@@ -125,7 +125,7 @@ The lab repository contains a simple `main.tf`. You need to add a `cloud` block 
 
    !> If the `nano` editor looks garbled after pasting, press **Ctrl-L** to refresh the display.
 
-1. Re-initialize Terraform so it picks up the new backend:
+1. Initialize Terraform:
    ```sh
    terraform init
    ```
@@ -182,10 +182,6 @@ Run a plan now, before setting any variables, to see what happens when a require
 
 ### Add the variable and plan again
 
-1. Open your workspace in the Terraform Enterprise web UI:
-   ```
-   https://tfe.<your-username>.example.com
-   ```
 1. Navigate to **myorg** > **myworkspace** > **Variables**.
 1. Under **Workspace variables**, click **+ Add variable**.
 1. Select **Terraform variable**.
