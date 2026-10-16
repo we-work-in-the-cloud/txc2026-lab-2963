@@ -22,7 +22,6 @@ Fresh Terraform Enterprise installations have no users. The `initial-user.sh` sc
    Token:    12345
              (saved to user.token)
    ```
-   ?> Copy the password — you will need it in the next step.
 
 ### Log in and create your first organization
 
@@ -61,11 +60,13 @@ You now have a working Terraform Enterprise installation with an admin user and 
 
 ## Create a workspace
 
-A workspace is where Terraform Enterprise manages one set of infrastructure. Each workspace holds its own configuration, variables, state file and run history, and has its own access permissions. Locally, you keep a separate working directory for each configuration; in Terraform Enterprise, the workspace does that job, with the state stored centrally and securely instead of on your machine.
-
 Before connecting Terraform to Terraform Enterprise you need a workspace to hold your state and run history.
 
-Terraform Enterprise supports three workflow types for triggering runs:
+A workspace is where Terraform Enterprise manages one set of infrastructure. Each workspace holds its own configuration, variables, state file and run history, and has its own access permissions. Locally, you keep a separate working directory for each configuration; in Terraform Enterprise, the workspace does that job, with the state stored centrally and securely instead of on your machine.
+
+Workspaces live inside [projects](https://developer.hashicorp.com/terraform/enterprise/projects). A project groups related workspaces, for example everything that belongs to one application or one team. You can then grant a team access to the whole project instead of configuring permissions workspace by workspace, and use project-level settings to keep things consistent across its workspaces. This matters as the number of workspaces grows. You won't create a project in this lab: your workspace goes into the **Default Project**. But it's good to know projects exist and to use them once several teams share the same organization.
+
+Terraform Enterprise supports three workflow types for triggering runs within a workspace:
 
 - **CLI-driven** — you run `terraform plan` / `terraform apply` from your terminal; the CLI streams output back to you while the run executes remotely inside Terraform Enterprise.
 - **API-driven** — a pipeline or script POSTs a configuration bundle directly to the Terraform Enterprise API and polls for results. No local Terraform installation required.
@@ -74,16 +75,16 @@ Terraform Enterprise supports three workflow types for triggering runs:
 In this section you use the **CLI-driven** workflow. You run commands locally in Cloud Shell, but the actual plan and apply execute inside your Terraform Enterprise instance on OpenShift.
 
 1. In the Terraform Enterprise web UI, make sure you are in the `myorg` organization.
-1. Click **Create a workspace**.
-1. Choose **CLI-driven workflow**.
+2. Click **Create a workspace**.
+3. Choose **CLI-driven workflow**.
 
    ![](images/50-cli-driven.png ':size=800')
 
-2. Set the workspace name to
+4. Set the workspace name to
    ```
    myworkspace
    ```
-3. Click **Create**.
+5. Click **Create**.
 
    ![](images/50-create-workspace.png ':size=800')
 

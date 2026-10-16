@@ -131,7 +131,7 @@ A pre-built dashboard for Terraform Enterprise is included with your lab instanc
 The **Metrics Explorer** lets you query any raw metric by name.
 
 1. In the IBM Cloud Monitoring left navigation, click **Explore**.
-1. In the metric search box, type:
+1. In the "Filter metrics" search box, type:
    ```
    tfe_
    ```
