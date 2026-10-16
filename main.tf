@@ -1,5 +1,3 @@
-# paste the workspace configuration here
-
 # do not change after this line
 variable "vpc_name" {
   description = "Name of your VPC"

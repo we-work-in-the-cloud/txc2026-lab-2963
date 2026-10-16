@@ -117,13 +117,13 @@ The lab repository contains a simple `main.tf`. You need to add a `cloud` block 
      }
    }
    ```
-1. Open `main.tf` in your editor (or use `nano`):
+1. Create `cloud.tf` in Cloud Shell:
    ```sh
-   nano main.tf
+   nano cloud.tf
    ```
 1. Paste the `terraform { ... }` block at the top of the file, then save.
 
-   !> The `nano` editor may look garbled after pasting. Press **Ctrl-L** to refresh the display.
+   !> If the `nano` editor looks garbled after pasting, press **Ctrl-L** to refresh the display.
 
 1. Re-initialize Terraform so it picks up the new backend:
    ```sh
