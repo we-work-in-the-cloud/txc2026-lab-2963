@@ -47,7 +47,7 @@ Terraform Enterprise spawns a short-lived Kubernetes Job for each plan or apply.
 
 1. In Cloud Shell, list pods in your agents namespace — because `TFE_RUN_PIPELINE_KUBERNETES_DEBUG_ENABLED` is set, the failed Job pod is not immediately deleted:
    ```sh
-   oc get pods n <your-username>-agents
+   oc get pods -n <your-username>-agents
    ```
    You will see a pod like `tfe-task-xxxxxxxx` in `CreateContainerError` status.
 
