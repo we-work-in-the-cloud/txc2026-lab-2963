@@ -76,11 +76,16 @@ In this section you use the **CLI-driven** workflow. You run commands locally in
 1. In the Terraform Enterprise web UI, make sure you are in the `myorg` organization.
 1. Click **Create a workspace**.
 1. Choose **CLI-driven workflow**.
-1. Set the workspace name to
+
+   ![](images/50-cli-driven.png ':size=800')
+
+2. Set the workspace name to
    ```
    myworkspace
    ```
-2. Click **Create**.
+3. Click **Create**.
+
+   ![](images/50-create-workspace.png ':size=800')
 
 ## Log in from the Terraform CLI
 
@@ -191,6 +196,8 @@ Run a plan now, before setting any variables, to see what happens when a require
    tfelab-2963-student
    ```
 1. Click **Add variable**.
+
+   ![](images/50-add-variable.png ':size=800')
 
 1. Run the plan again:
    ```sh

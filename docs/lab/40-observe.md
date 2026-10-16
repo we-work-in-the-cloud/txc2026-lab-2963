@@ -58,6 +58,8 @@ With all cluster workloads logging to the same instance, you need to scope the v
    | `sidekiq` | Background job queue (worker start/finish, job errors) |
    | `vault` | Internal secrets manager |
 
+   ![](images/40-tfe-set-filter.png ':size=800')
+
 !> Log entries from short-lived agent pods (in `<your-username>-agents`) also flow into IBM Cloud Logs. As you go through the next sections, refresh the dashboard to view the activity of agent pods.
 
 ?> IBM Cloud Logs also supports log-based alerts — you can trigger a notification when a pattern like `component:atlas ERROR` appears. Explore the **Alerts** section on your own after the lab.
@@ -101,7 +103,7 @@ Terraform Enterprise exposes metrics in Prometheus format at port `9090` on the 
 A pre-built dashboard for Terraform Enterprise is included with your lab instance.
 
 1. In the left navigation, click **Dashboards**.
-1. Under **All Dashboards**, open **Terraform Enterprise - <your username>**.
+1. Under **All Dashboards**, open **Terraform Enterprise - &lt;your username&gt;**.
 
    ![](images/40-tfe-monitoring-dashboard.png ':size=800')
 
@@ -135,7 +137,9 @@ The **Metrics Explorer** lets you query any raw metric by name.
    ```
    All Terraform Enterprise metric names start with the `tfe_` prefix. Select any metric from the autocomplete list.
 
-?> IBM Cloud Monitoring also supports metric-based alerts. Explore the **Alerts** section on your own after the lab.
+   ![](images/40-tfe-metrics.png ':size=800')
+
+?> IBM Cloud Monitoring also supports metric-based alerts.
 
 ?> **Checkpoint** — IBM Cloud Logs is showing Terraform Enterprise service logs in real time and you know how to filter by namespace and component. IBM Cloud Monitoring is showing the pre-built Terraform Enterprise dashboard with live metrics. Keep both browser tabs open — you'll need them in the Troubleshoot section.
 

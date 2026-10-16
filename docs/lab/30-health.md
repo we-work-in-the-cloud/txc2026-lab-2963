@@ -129,7 +129,7 @@ If the admin console dashboard shows everything green, Terraform Enterprise is r
    ```
 1. If nothing is printed, the application is still starting or hit a problem. Search the log for errors:
    ```sh
-   oc logs deploy/terraform-enterprise | grep -i error
+   oc logs deploy/terraform-enterprise | grep -iF "[ERROR]"
    ```
    Wait a minute and run the readiness check again.
 

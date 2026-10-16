@@ -57,7 +57,7 @@ IBM Cloud Shell gives you a browser-based terminal with all the tools you need â
 
 Before running any `oc` or `helm` commands you need to authenticate against the OpenShift cluster.
 
-1. Go to the [list of OpenShift clusters](https://cloud.ibm.com/containers/cluster-management/clusters?platformType=openshift).
+1. In the IBM Cloud console, navigate to **Navigation menu** (â˜°) > **Containers** > **Clusters**, or follow this direct link: [Red Hat OpenShift clusters](https://cloud.ibm.com/containers/cluster-management/clusters?platformType=openshift).
 2. Click the cluster named **tfe**.
 3. Click **OpenShift web console**.
    ![](images/20-openshift-web-console.png ':size=500')
