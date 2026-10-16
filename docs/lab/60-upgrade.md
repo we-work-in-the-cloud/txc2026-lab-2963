@@ -204,10 +204,9 @@ With the node drained and the pre-upgrade check passing, update `overrides.yaml`
    helm upgrade terraform-enterprise hashicorp/terraform-enterprise \
      --version <TARGET_CHART_VERSION> \
      --namespace <your-username> \
-     -f overrides.yaml \
-     --wait
+     -f overrides.yaml
    ```
-   Helm streams events as the new pod starts. The `--wait` flag blocks until the rollout completes. Database migrations run automatically during startup and may take a few minutes to complete.
+   Helm streams events as the new pod starts. You can add the optional `--wait` flag to block until the rollout completes. Database migrations run automatically during startup and may take a few minutes to complete.
 
 1. Watch the rollout:
    ```sh

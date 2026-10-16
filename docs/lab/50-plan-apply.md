@@ -123,6 +123,8 @@ The lab repository contains a simple `main.tf`. You need to add a `cloud` block 
    ```
 1. Paste the `terraform { ... }` block at the top of the file, then save.
 
+   !> The `nano` editor may look garbled after pasting. Press **Ctrl-L** to refresh the display.
+
 1. Re-initialize Terraform so it picks up the new backend:
    ```sh
    terraform init
@@ -205,7 +207,7 @@ Run a plan now, before setting any variables, to see what happens when a require
    ```
    Terraform will print a link to the run in Terraform Enterprise, then stream the plan output back to your terminal:
    ```
-   Running plan in Terraform Cloud. Output will stream here. Pressing Ctrl-C
+   Running plan in Terraform. Output will stream here. Pressing Ctrl-C
    will stop streaming the logs, but will not stop the plan from running
    remotely.
 
@@ -214,7 +216,7 @@ Run a plan now, before setting any variables, to see what happens when a require
    To view this run in a browser, open:
    https://<your-username>.tfe.example.com/app/myorg/myworkspace/runs/run-xxxxxxxxxxxxxxxx
    ```
-1. Click the link to follow the run in the Terraform Enterprise web UI.
+1. Copy and open the link to follow the run in the Terraform Enterprise web UI.
 
 ## Apply
 
@@ -226,8 +228,8 @@ Run a plan now, before setting any variables, to see what happens when a require
 
 1. Type `yes` at the confirmation prompt:
    ```
-   Do you want to perform these actions in Terraform Cloud?
-     Terraform Cloud will perform the actions described above.
+   Do you want to perform these actions in Terraform?
+     Terraform will perform the actions described above.
      Only 'yes' will be accepted to approve.
 
    Enter a value: yes

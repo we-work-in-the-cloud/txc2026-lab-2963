@@ -82,7 +82,7 @@ Before running any `oc` or `helm` commands you need to authenticate against the 
 
 The lab repository contains the helper script that will configure Helm for your specific environment.
 
-1. Clone the repository:
+1. In Cloud Shell, clone the repository:
    ```sh
    git clone https://github.com/we-work-in-the-cloud/txc2026-lab-2963
    ```
