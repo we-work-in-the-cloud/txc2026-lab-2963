@@ -10,7 +10,7 @@ Over the course of this lab you went from zero to a scale-ready Terraform Enterp
 - **Validated** application health and subsystem readiness with `tfectl` and the admin console
 - **Wired up observability** — structured logs flowing into IBM Cloud Logs and Prometheus metrics into IBM Cloud Monitoring dashboards
 - **Ran a CLI-driven workflow** — authenticated the Terraform CLI, created a workspace, and executed a plan and apply with remote execution
-- **Upgraded safely** — reviewed release notes, ran the pre-upgrade check to catch a breaking change before it caused downtime, drained the node, and rolled forward to `2.1.0`
+- **Upgraded safely** — reviewed release notes, ran the pre-upgrade check to catch a breaking change before it caused downtime, drained the node, and rolled forward to `2.0.8`
 
 ## Why Terraform Enterprise over plain Terraform?
 

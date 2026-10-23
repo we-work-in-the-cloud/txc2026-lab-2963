@@ -2,7 +2,7 @@
 
 Upgrading Terraform Enterprise is a deliberate, sequenced operation — not a `helm upgrade` you fire and forget. In this section you follow the recommended upgrade workflow: review the release notes, run the pre-upgrade check to catch problems before they cause downtime, drain the node, and then apply the upgrade.
 
-You are upgrading from **2.0.5** (the version you deployed) to **2.1.0**.
+You are upgrading from **2.0.5** (the version you deployed) to **2.0.8**.
 
 ## Planning checklist
 
@@ -28,12 +28,12 @@ In this lab you follow the parts of the checklist that fit a short session: you 
 Before any upgrade, read the release notes for every version between your current release and the target. This is where breaking changes, deprecated configuration keys, and required intermediate releases are documented.
 
 1. Open the [Terraform Enterprise releases page](https://developer.hashicorp.com/terraform/enterprise/releases).
-1. Find the **2.1.0** entry and open its release notes.
+1. Find the **2.0.8** entry and open its release notes.
 1. Look for any **Breaking changes** section. Note any configuration variables that have been renamed or removed — you'll need to update `overrides.yaml` before the upgrade.
 
-   !> **2.1.0 contains a breaking change.** Read the release notes carefully before proceeding. The pre-upgrade check in the next section will also surface this — but knowing about it in advance lets you prepare the fix before you start the maintenance window.
+   !> Read the release notes carefully before proceeding. The pre-upgrade check can surface breaking changes — but knowing about it in advance lets you prepare the fix before you start the maintenance window.
 
-1. Also confirm the **Last required release** marker. If any intermediate version is listed as required, you must upgrade through it first. For this lab, a direct upgrade from `2.0.5` to `2.1.0` is supported.
+1. Also confirm the **Last required release** marker. If any intermediate version is listed as required, you must upgrade through it first. For this lab, a direct upgrade from `2.0.5` to `2.0.8` is supported.
 
 ## Check your Cloud Shell session
 
@@ -62,18 +62,18 @@ The lab takes time, so your Cloud Shell session may have expired. Check that you
 
 ## Run the pre-upgrade check
 
-The pre-upgrade check runs the Terraform Enterprise `2.1.0` container with a special entrypoint that validates your configuration and connectivity without modifying anything. It exits with a non-zero code if the upgrade would fail, so you can fix problems now rather than during a live upgrade.
+The pre-upgrade check runs the Terraform Enterprise `2.0.8` container with a special entrypoint that validates your configuration and connectivity without modifying anything. It exits with a non-zero code if the upgrade would fail, so you can fix problems now rather than during a live upgrade.
 
 This is a Helm-based workflow that runs a temporary Kubernetes Job in your existing namespace.
 
-1. Update the Helm repository to pick up the chart version for `2.1.0`:
+1. Update the Helm repository to pick up the chart version for `2.0.8`:
    ```sh
    helm repo update
    ```
 
-1. Find the chart version whose `APP VERSION` is `2.1.0`:
+1. Find the chart version whose `APP VERSION` is `2.0.8`:
    ```sh
-   helm search repo hashicorp/terraform-enterprise --versions | grep -E 'NAME|2.1.0'
+   helm search repo hashicorp/terraform-enterprise --versions | grep -E 'NAME|2.0.8'
    ```
    Note the value in the **CHART VERSION** column — you'll use it as `<TARGET_CHART_VERSION>` below.
 
@@ -81,12 +81,12 @@ This is a Helm-based workflow that runs a temporary Kubernetes Job in your exist
    ```sh
    helm template terraform-enterprise hashicorp/terraform-enterprise \
      -n <your-username> \
-     --version 2.1.0 \
+     --version 2.0.8 \
      -f overrides.yaml \
      --set preupgradeCheck.enabled=true \
      --set preupgradeCheck.tfeNamespace=true \
      --set openshift.enabled=true \
-     --set image.tag=2.1.0 \
+     --set image.tag=2.0.8 \
      --show-only templates/preupgrade-check-job.yaml \
      > preupgrade.yaml
    ```
@@ -109,7 +109,7 @@ This is a Helm-based workflow that runs a temporary Kubernetes Job in your exist
    ```
    Terraform Enterprise Pre-Upgrade Check
    Current environment version: 2.0.5
-   Target version: 2.1.0
+   Target version: 2.0.8
    ---
    ✓ archivist
      ✓ write_access
@@ -143,10 +143,10 @@ This is a Helm-based workflow that runs a temporary Kubernetes Job in your exist
 
    Status: OK | Time: 1.7s | Checks: 14 Passed, 0 Warning, 0 Failed
 
-   Pre-upgrade checks indicate this environment is ready to upgrade to 2.1.0
+   Pre-upgrade checks indicate this environment is ready to upgrade to 2.0.8
    ```
 
-   !> If the output shows a **breaking change warning** for `2.1.0`, read the warning message carefully. It will tell you exactly which configuration key needs to change. Update `overrides.yaml` accordingly before continuing.
+   !> If the output shows a **breaking change warning** for `2.0.8`, read the warning message carefully. It will tell you exactly which configuration key needs to change. Update `overrides.yaml` accordingly before continuing.
 
 1. Clean up the Job:
    ```sh
@@ -190,12 +190,12 @@ With the node drained and the pre-upgrade check passing, update `overrides.yaml`
    ```sh
    nano overrides.yaml
    ```
-   Find the `image` section and change the tag to `2.1.0`:
+   Find the `image` section and change the tag to `2.0.8`:
    ```yaml
    image:
      repository: images.releases.hashicorp.com/hashicorp
      name: terraform-enterprise
-     tag: "2.1.0"
+     tag: "2.0.8"
      pullPolicy: IfNotPresent
    ```
    If the pre-upgrade check flagged a breaking change that requires a configuration key rename, make that edit here too.
@@ -235,10 +235,10 @@ With the node drained and the pre-upgrade check passing, update `overrides.yaml`
    ```
    https://tfe.<your-username>.example.com
    ```
-   The footer shows the running version — confirm it reads `2.1.0`.
+   The footer shows the running version — confirm it reads `2.0.8`.
 
 3. Run a quick smoke test — trigger a `terraform plan` from Cloud Shell and confirm the run completes successfully in the Terraform Enterprise web UI.
 
-?> **Checkpoint** — Terraform Enterprise is now running `2.1.0`. You reviewed the release notes, caught the breaking change with the pre-upgrade check before it caused an outage, drained the node safely, and validated the upgraded installation. In the next section you'll work through some troubleshooting scenarios.
+?> **Checkpoint** — Terraform Enterprise is now running `2.0.8`. You reviewed the release notes, caught the breaking change with the pre-upgrade check before it caused an outage, drained the node safely, and validated the upgraded installation. In the next section you'll work through some troubleshooting scenarios.
 
 ⇨ [Continue to Troubleshooting](70-troubleshoot.md)
